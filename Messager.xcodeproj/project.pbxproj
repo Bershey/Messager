@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2DCCF038E334E7C2B21F6815 /* Pods_Messager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9229ED18E67EA2ED8F93557 /* Pods_Messager.framework */; };
+		8F2CD3432705713500563737 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CD3422705713500563737 /* User.swift */; };
+		8F2CD3462705742F00563737 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CD3452705742F00563737 /* Constants.swift */; };
+		8F3E16B42707E3C400313E20 /* FcollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3E16B32707E3C400313E20 /* FcollectionReference.swift */; };
 		8F98C42C27047CAF00DD8A05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F98C42B27047CAF00DD8A05 /* AppDelegate.swift */; };
 		8F98C42E27047CAF00DD8A05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F98C42D27047CAF00DD8A05 /* SceneDelegate.swift */; };
 		8F98C43027047CAF00DD8A05 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F98C42F27047CAF00DD8A05 /* LoginViewController.swift */; };
@@ -20,6 +23,9 @@
 /* Begin PBXFileReference section */
 		1EAF02271C794C83E6D267E1 /* Pods-Messager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messager.debug.xcconfig"; path = "Target Support Files/Pods-Messager/Pods-Messager.debug.xcconfig"; sourceTree = "<group>"; };
 		3ECFBD876F71A1E594CB90BC /* Pods-Messager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messager.release.xcconfig"; path = "Target Support Files/Pods-Messager/Pods-Messager.release.xcconfig"; sourceTree = "<group>"; };
+		8F2CD3422705713500563737 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8F2CD3452705742F00563737 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8F3E16B32707E3C400313E20 /* FcollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcollectionReference.swift; sourceTree = "<group>"; };
 		8F98C42827047CAF00DD8A05 /* Messager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F98C42B27047CAF00DD8A05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F98C42D27047CAF00DD8A05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8F2CD3442705713900563737 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8F2CD3422705713500563737 /* User.swift */,
+				8F3E16B32707E3C400313E20 /* FcollectionReference.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8F98C41F27047CAF00DD8A05 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +100,8 @@
 				8F98C42B27047CAF00DD8A05 /* AppDelegate.swift */,
 				8F98C42D27047CAF00DD8A05 /* SceneDelegate.swift */,
 				8F98C42F27047CAF00DD8A05 /* LoginViewController.swift */,
+				8F2CD3452705742F00563737 /* Constants.swift */,
+				8F2CD3442705713900563737 /* Model */,
 				8F98C43127047CAF00DD8A05 /* Main.storyboard */,
 				8F98C43427047CB000DD8A05 /* Assets.xcassets */,
 				8F98C43627047CB000DD8A05 /* LaunchScreen.storyboard */,
@@ -101,6 +118,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F98C43C27047CB000DD8A05 /* Build configuration list for PBXNativeTarget "Messager" */;
 			buildPhases = (
+				8F3E163A2706D93A00313E20 /* Run SwiftLint */,
 				1F286824B470D4D4F1764057 /* [CP] Check Pods Manifest.lock */,
 				8F98C42427047CAF00DD8A05 /* Sources */,
 				8F98C42527047CAF00DD8A05 /* Frameworks */,
@@ -203,6 +221,25 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Messager/Pods-Messager-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8F3E163A2706D93A00313E20 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -210,8 +247,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F2CD3462705742F00563737 /* Constants.swift in Sources */,
+				8F2CD3432705713500563737 /* User.swift in Sources */,
 				8F98C43027047CAF00DD8A05 /* LoginViewController.swift in Sources */,
 				8F98C42C27047CAF00DD8A05 /* AppDelegate.swift in Sources */,
+				8F3E16B42707E3C400313E20 /* FcollectionReference.swift in Sources */,
 				8F98C42E27047CAF00DD8A05 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

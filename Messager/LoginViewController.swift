@@ -9,28 +9,25 @@ import UIKit
 import ProgressHUD
 
 class LoginViewController: UIViewController {
-    
-    //MARK: - IBOutlets
-    //labels
+    // MARK: - IBOutlets
+    // labels
     @IBOutlet weak var emailLabelOutlet: UILabel!
     @IBOutlet weak var passwordLabelOutlet: UILabel!
     @IBOutlet weak var repeatPasswordLabel: UILabel!
     @IBOutlet weak var signUpLabel: UILabel!
-    //textFields
+    // textFields
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
-    //Button
+    // Button
     @IBOutlet weak var loginButtonOutlet: UIButton!
     @IBOutlet weak var resendEmailButtonOutlet: UIButton!
     @IBOutlet weak var signUpButtonbOutlet: UIButton!
-    //Views
+    // Views
     @IBOutlet weak var repeatPasswordLineView: UIView!
     
-    //MARK: - Vars
+    // MARK: - Vars
     var isLogin = true
-
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +36,7 @@ setupTextFieldDelegates()
         setupBackgroundTap()
     }
 
-    //MARK: - IBActions
+    // MARK: - IBActions
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if isDataInputed(type: isLogin ? "login" : "register") {
 print("have data for login/reg")
@@ -67,9 +64,8 @@ print("have data for login/reg")
         updateUIFor(login: sender.titleLabel?.text == "Login")
         isLogin.toggle()
     }
-    
-    
-    //MARK: - Setup
+
+    // MARK: - Setup
     private func setupTextFieldDelegates() {
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -89,10 +85,8 @@ print("have data for login/reg")
     @objc func backgroundTap() {
         view.endEditing(false)
     }
-    
-    
-    
-    //MARK: - Animations
+     
+    // MARK: - Animations
     private func updateUIFor(login: Bool) {
         loginButtonOutlet.setImage(UIImage(named: login ? "loginBtn" : "registerBtn"), for: .normal)
         signUpButtonbOutlet.setTitle(login ? "SignUp" : "Login", for: .normal)
@@ -104,8 +98,6 @@ print("have data for login/reg")
             self.repeatPasswordLineView.isHidden = login
         }
     }
-    
-    
     private func updatePlaceHolderLabels(textField: UITextField) {
         switch textField {
         case emailTextField:
@@ -116,8 +108,7 @@ print("have data for login/reg")
             repeatPasswordLabel.text = textField.hasText ? "Password" : ""
         }
     }
-    
-    //MARK: - Helpers
+    // MARK: - Helpers
     private func isDataInputed(type: String) -> Bool {
         switch type {
         case "login":
@@ -128,8 +119,4 @@ print("have data for login/reg")
             return emailTextField.text != ""
         }
     }
-
-
-
 }
-
