@@ -102,7 +102,7 @@
 				8F98C42B27047CAF00DD8A05 /* AppDelegate.swift */,
 				8F98C42D27047CAF00DD8A05 /* SceneDelegate.swift */,
 				8F98C42F27047CAF00DD8A05 /* LoginViewController.swift */,
-				8F2CD3452705742F00563737 /* Constants.swift */,
+				8FA3ACF12713192200333FD8 /* Helpers */,
 				8F2CD3442705713900563737 /* Model */,
 				8F98C43127047CAF00DD8A05 /* Main.storyboard */,
 				8F98C43427047CB000DD8A05 /* Assets.xcassets */,
@@ -111,6 +111,14 @@
 				8F98C43F270489E200DD8A05 /* GoogleService-Info.plist */,
 			);
 			path = Messager;
+			sourceTree = "<group>";
+		};
+		8FA3ACF12713192200333FD8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8F2CD3452705742F00563737 /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		8FD3F1C1270B00CA00A9E9E9 /* FirebaseHelpers */ = {
