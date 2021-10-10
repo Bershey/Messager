@@ -93,7 +93,7 @@
                                             <constraint firstAttribute="height" constant="18.5" id="O8g-6n-Mtp"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEN-f9-e9P">
                                         <rect key="frame" x="0.0" y="206" width="382" height="2"/>
