@@ -10,4 +10,4 @@ import Foundation
 let userDefaults = UserDefaults.standard
 
 public let kCURRENTUSER = "currentUser"
-
+public let kFILEREFERENCE = "gs://messanger-8a672.appspot.com"

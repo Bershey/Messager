@@ -36,6 +36,7 @@ class LoginViewController: UIViewController {
         setupBackgroundTap()
     }
 
+
     // MARK: - IBActions
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if isDataInputed(type: isLogin ? "login" : "register") {
@@ -43,6 +44,7 @@ class LoginViewController: UIViewController {
         } else {
             ProgressHUD.showFailed("All Fields are required")
         }
+
     }
     
     @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
