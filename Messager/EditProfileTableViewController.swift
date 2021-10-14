@@ -48,15 +48,7 @@ class EditProfileTableViewController: UITableViewController {
         super.tableView(tableView, didSelectRowAt: indexPath)
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 
     // MARK: - IBActions
 
@@ -95,7 +87,9 @@ class EditProfileTableViewController: UITableViewController {
         self.present(gallery, animated: true, completion: nil)
     }
 
-    private func showImageGallery(_ image: UIImage) {
+
+
+    private func uploadAvatarImage(_ image: UIImage) {
         let fileDirectory = "Avatars/" + "\(User.currentId)" + ".jpg"
         FileStorage.uploadImage(image, directory: fileDirectory) { avatarLink in
             if var user = User.currentUser {
@@ -131,7 +125,7 @@ extension EditProfileTableViewController: GalleryControllerDelegate {
             images.first!.resolve { avatarImage in
 
                 if avatarImage != nil {
-                    self.uploadava
+                    self.uploadAvatarImage(avatarImage!)
                     self.avatarImageView.image = avatarImage
                 } else {
                     ProgressHUD.showError("Could not select image")
