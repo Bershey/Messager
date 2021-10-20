@@ -124,6 +124,25 @@ class FirebaseUserListener {
             completion(users)
 
         }
+    }
 
+    func dowloadUsersFromFirebase(withIds: [String], completion: @escaping(_ allUsers: [User]) -> Void) {
+        var count = 0
+        var usersArray: [User] = []
+        for userId in withIds {
+            FirebaseReference(.User).document(userId).getDocument{ (querySnapshot, error) in
+                guard let document = querySnapshot else {
+                    print("no document for user")
+                    return
+                }
+                let user = try? document.data(as: User.self)
+                usersArray.append(user!)
+                count += 1
+                if count == withIds.count {
+                    completion(usersArray)
+                }
+
+            }
+        }
     }
 }

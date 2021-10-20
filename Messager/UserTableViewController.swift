@@ -18,6 +18,7 @@ class UserTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        downloadUsers()
 
     }
 
@@ -34,6 +35,16 @@ class UserTableViewController: UITableViewController {
         cell.configureC(user: user)
         return cell
     }
-  
+
+    // MARK: - DownloadUsers
+    private func downloadUsers() {
+        FirebaseUserListener.shared.downloadAllUsersFromFirebase { allUsers in
+            self.allUsers = allUsers
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+
 
 }
