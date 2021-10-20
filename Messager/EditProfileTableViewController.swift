@@ -46,17 +46,13 @@ class EditProfileTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
+
+        if indexPath.section == 1 && indexPath.row == 0 {
+            performSegue(withIdentifier: "editProfileToStatusSeg", sender: self)
+        }
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 
     // MARK: - IBActions
 
@@ -72,7 +68,9 @@ class EditProfileTableViewController: UITableViewController {
             statusLabel.text = user.status
 
             if user.avaterLink != "" {
-
+                FileStorage.downloadImage(imageUrl: user.avaterLink) { avatarImage in
+                    self.avatarImageView.image = avatarImage?.circleMasked
+                }
             }
         }
     }
@@ -95,14 +93,17 @@ class EditProfileTableViewController: UITableViewController {
         self.present(gallery, animated: true, completion: nil)
     }
 
-    private func showImageGallery(_ image: UIImage) {
+
+
+    private func uploadAvatarImage(_ image: UIImage) {
         let fileDirectory = "Avatars/" + "\(User.currentId)" + ".jpg"
         FileStorage.uploadImage(image, directory: fileDirectory) { avatarLink in
             if var user = User.currentUser {
                 user.avaterLink = avatarLink ?? ""
                 saveUserLocally(user)
-                FirebaseUserListener.shared.saveUserToFirestore(user)
+                FirebaseUserListener.shared.saveUserToFireStore(user)
             }
+            FileStorage.saveFileLocally(fileData: image.jpegData(compressionQuality: 1.0)! as NSData, fileName: User.currentId)
         }
     }
 
@@ -115,7 +116,7 @@ extension EditProfileTableViewController: UITextFieldDelegate {
                 if var user = User.currentUser {
                     user.username = textField.text!
                     saveUserLocally(user)
-                    FirebaseUserListener.shared.saveUserToFirestore(user)
+                    FirebaseUserListener.shared.saveUserToFireStore(user)
             }
         }
             textField.resignFirstResponder()
@@ -131,8 +132,8 @@ extension EditProfileTableViewController: GalleryControllerDelegate {
             images.first!.resolve { avatarImage in
 
                 if avatarImage != nil {
-                    self.uploadava
-                    self.avatarImageView.image = avatarImage
+                    self.uploadAvatarImage(avatarImage!)
+                    self.avatarImageView.image = avatarImage?.circleMasked
                 } else {
                     ProgressHUD.showError("Could not select image")
                 }

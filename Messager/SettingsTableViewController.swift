@@ -33,7 +33,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableview.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
 
         if indexPath.section == 0 && indexPath.row == 0 {
             performSegue(withIdentifier: "settingsToEditProfileSeg", sender: self)
